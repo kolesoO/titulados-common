@@ -11,34 +11,65 @@ $APPLICATION->SetTitle('title');
 
 <section>
     <div class="container px-0 d-flex flex-wrap justify-content-center">
-        <div class="title-1 mb-5 col-12 p-0 text-center">El modelo de actuación</div>
-        <div class="main_slider clearfix js-slider col-7 p-0 mx-auto my-0" data-autoplay="false"
-             data-infinite="false" data-speed="1000" data-arrows="false" data-dots="true">
-            <div class="main_slider-item">
-                <div class="col-xl-12 p-0 main_slider-description d-flex flex-wrap align-content-between">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/img/slider-image.png" alt="" class="mr-5">
-                    <div class="main_slider-footer col-xl-6 p-0 d-flex flex-wrap">
-                        <div class="col-12 p-0">Nuestros asesores contactaran con alumno para dar el presupuesto y dejar elegir la forma de pago ( puede ser fraccionada)</div>
-                    </div>
-                </div>
-            </div>
-            <div class="main_slider-item">
-                <div class="col-xl-12 p-0 main_slider-description d-flex flex-wrap align-content-between">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/img/slider-image.png" alt="" class="mr-5">
-                    <div class="main_slider-footer col-xl-6 p-0 d-flex flex-wrap">
-                        <div class="col-12 p-0">Nuestros asesores contactaran con alumno para dar el presupuesto y dejar elegir la forma de pago ( puede ser fraccionada</div>
-                    </div>
-                </div>
-            </div>
-            <div class="main_slider-item">
-                <div class="col-xl-12 p-0 main_slider-description d-flex flex-wrap align-content-between">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/img/slider-image.png" alt="" class="mr-5">
-                    <div class="main_slider-footer col-xl-6 p-0 d-flex flex-wrap">
-                        <div class="col-12 p-0">Nuestros asesores contactaran con alumno para dar el presupuesto y dejar elegir la forma de pago ( puede ser fraccionada</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?
+        $APPLICATION->IncludeComponent(
+            "bitrix:news.list",
+            "main-slider",
+            [
+                "DISPLAY_DATE" => "Y",
+                "DISPLAY_NAME" => "Y",
+                "DISPLAY_PICTURE" => "Y",
+                "DISPLAY_PREVIEW_TEXT" => "Y",
+                "AJAX_MODE" => "N",
+                "IBLOCK_TYPE" => "content",
+                "IBLOCK_ID" => IBLOCK_CONTENT_SLIDERS,
+                "NEWS_COUNT" => "5",
+                "SORT_BY1" => "ID",
+                "SORT_ORDER1" => "DESC",
+                "SORT_BY2" => "SORT",
+                "SORT_ORDER2" => "ASC",
+                "FILTER_NAME" => "arSliderFilter",
+                "FIELD_CODE" => Array("ID", "NAME", "PREVIEW_PICTURE", "PREVIEW_TEXT"),
+                "PROPERTY_CODE" => Array("*"),
+                "CHECK_DATES" => "Y",
+                "DETAIL_URL" => "",
+                "PREVIEW_TRUNCATE_LEN" => "",
+                "ACTIVE_DATE_FORMAT" => "M d, Y",
+                "SET_TITLE" => "N",
+                "SET_BROWSER_TITLE" => "N",
+                "SET_META_KEYWORDS" => "N",
+                "SET_META_DESCRIPTION" => "N",
+                "SET_LAST_MODIFIED" => "Y",
+                "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                "ADD_SECTIONS_CHAIN" => "Y",
+                "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+                "PARENT_SECTION" => "",
+                "PARENT_SECTION_CODE" => "index-modelo",
+                "INCLUDE_SUBSECTIONS" => "Y",
+                "CACHE_TYPE" => "A",
+                "CACHE_TIME" => "3600",
+                "CACHE_FILTER" => "Y",
+                "CACHE_GROUPS" => "Y",
+                "DISPLAY_TOP_PAGER" => "N",
+                "DISPLAY_BOTTOM_PAGER" => "N",
+                "PAGER_TITLE" => "Новости",
+                "PAGER_SHOW_ALWAYS" => "Y",
+                "PAGER_TEMPLATE" => "",
+                "PAGER_DESC_NUMBERING" => "Y",
+                "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                "PAGER_SHOW_ALL" => "Y",
+                "PAGER_BASE_LINK_ENABLE" => "Y",
+                "SET_STATUS_404" => "N",
+                "SHOW_404" => "N",
+                "MESSAGE_404" => "",
+                "PAGER_BASE_LINK" => "",
+                "PAGER_PARAMS_NAME" => "arrPager",
+                "AJAX_OPTION_JUMP" => "N",
+                "AJAX_OPTION_STYLE" => "Y",
+                "AJAX_OPTION_HISTORY" => "N",
+                "AJAX_OPTION_ADDITIONAL" => "",
+            ]
+        );?>
         <div class="descr-block col-xl-12 p-0 d-flex flex-wrap justify-content-between">
             <div class="descr-block-item col-4 p-0">Llevamos más de 5 años dedicándonos a la ayuda universitaria de forma profesional, en XXX únicamente contamos con profesionales del sector con amplia experiencia redactando proyectos académicos, por supuesto están avalados por el nombre de la empresa, nuestra dilatada experiencia, nuestros profesores y nuestra metodología de trabajo, nos permite proclamarnos líderes del sector, nuestros resultados nos avalan. ¿Quién estará a cargo de mi proyecto?</div>
             <div class="descr-block-item col-12 p-0 col-md-3 col-xl-2">

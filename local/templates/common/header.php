@@ -84,9 +84,27 @@ $rsAsset->addJs(SITE_TEMPLATE_PATH . '/dist/app.js');
                             )
                         );?>
                         <div class="sign col-sm-3 col-xl-4 text-center p-0 d-flex align-items-baseline justify-content-end">
-                            <div class="header-sign_up mr-5" data-popup-open="#signup-form">Регистрация</div>
+                            <div class="header-sign_up mr-5" data-popup-open="#signup-form">
+                                <?$APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    ".default",
+                                    [
+                                        "AREA_FILE_SHOW" => "file",
+                                        "PATH" => SITE_TEMPLATE_PATH . "/include/header/register-btn.php"
+                                    ],
+                                    false
+                                );?>
+                            </div>
                             <div class="header-sign_in" data-popup-open="#signin-form">
-                                <span>Вход</span>
+                                <?$APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    ".default",
+                                    [
+                                        "AREA_FILE_SHOW" => "file",
+                                        "PATH" => SITE_TEMPLATE_PATH . "/include/header/auth-btn.php"
+                                    ],
+                                    false
+                                );?>
                                 <i class="far fa-user ml-1"></i>
                             </div>
                         </div>
@@ -102,10 +120,10 @@ $rsAsset->addJs(SITE_TEMPLATE_PATH . '/dist/app.js');
                             <div class="signup-form flex-wrap justify-content-center">
                                 <div class="tabs js-tabs d-flex flex-wrap justify-content-between col-12 p-0">
                                     <a href="#" class="tab author" data-tab_target="#author">
-                                        <span>Автор</span>
+                                        <span>Autor</span>
                                     </a>
                                     <a href="#" class="tab client" data-tab_target="#client">
-                                        <span>Заказчик</span>
+                                        <span>Cliente</span>
                                     </a>
                                     <div class="tab-data col-12 p-0" data-tab_content>
                                         <div id="author" data-tab_item>
@@ -113,17 +131,17 @@ $rsAsset->addJs(SITE_TEMPLATE_PATH . '/dist/app.js');
                                                 <div class="circle author text-center"><span>я</span></div>
                                                 <div class="arrow-author"></div>
                                             </div>
-                                            <div class="form-title text-primary text-center">Регистрация как автор</div>
+                                            <div class="form-title text-primary text-center">Registrarse como autor</div>
                                             <form id="author-signup-form" class="col-12 p-0 text-center">
                                                 <input type="hidden" name="type" value="1">
                                                 <input type="email" name="email" placeholder="Email" class="col-12 p-0" required>
-                                                <input type="password" name="password" placeholder="Пароль" class="col-12 p-0" required>
-                                                <input type="password" name="confirm-password" placeholder="Пароль повторно" class="col-12 p-0" required>
+                                                <input type="password" name="password" placeholder="Contraseña" class="col-12 p-0" required>
+                                                <input type="password" name="confirm-password" placeholder="Contraseña de nuevo" class="col-12 p-0" required>
                                                 <div class="col-12 p-0 agreement">
                                                     <input type="checkbox" id="author-agreement" required>
-                                                    <label for="author-agreement">Я принимаю <a href="#">пользовательское соглашение</a></label>
+                                                    <label for="author-agreement">Acepto <a href="#">el acuerdo de usuario</a></label>
                                                 </div>
-                                                <button class="btn btn-primary button-round" type="submit">Зарегистрироваться</button>
+                                                <button class="btn btn-primary button-round" type="submit">Regístrate ahora</button>
                                             </form>
                                         </div>
                                         <div id="client" data-tab_item>
@@ -131,24 +149,24 @@ $rsAsset->addJs(SITE_TEMPLATE_PATH . '/dist/app.js');
                                                 <div class="circle client text-center"><span>я</span></div>
                                                 <div class="arrow-client"></div>
                                             </div>
-                                            <div class="form-title text-center">Регистрация как заказчик</div>
+                                            <div class="form-title text-center">Registro como cliente</div>
                                             <form id="client-signup-form" class="col-12 p-0 text-center">
                                                 <input type="hidden" name="type" value="0">
                                                 <input type="email" name="email" placeholder="Email" class="col-12 p-0" required>
-                                                <input type="password" name="password" placeholder="Пароль" class="col-12 p-0" required>
-                                                <input type="password" name="confirm-password" placeholder="Пароль повторно" class="col-12 p-0" required>
+                                                <input type="password" name="password" placeholder="Contraseña" class="col-12 p-0" required>
+                                                <input type="password" name="confirm-password" placeholder="Contraseña de nuevo" class="col-12 p-0" required>
                                                 <div class="col-12 p-0 agreement">
                                                     <input type="checkbox" id="client-agreement" required>
-                                                    <label for="client-agreement">Я принимаю <a href="#" class="text-warning">пользовательское соглашение</a></label>
+                                                    <label for="client-agreement">Acepto <a href="#">el acuerdo de usuario</a></label>
                                                 </div>
-                                                <button class="btn button-round" type="submit">Зарегистрироваться</button>
+                                                <button class="btn button-round" type="submit">Regístrate ahora</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-tail bg-blue text-center">
-                                    <div class="mb-4">Уже зарегистрированы?</div>
-                                    <button class="btn bg-light button-round text-primary col-4" data-popup-open="#signin-form">Войти</button>
+                                    <div class="mb-4">¿Ya registrado?</div>
+                                    <button class="btn bg-light button-round text-primary col-4" data-popup-open="#signin-form">Entrar</button>
                                 </div>
                             </div>
                         </div>
@@ -158,15 +176,15 @@ $rsAsset->addJs(SITE_TEMPLATE_PATH . '/dist/app.js');
                     <div class="popup_wrapper">
                         <div class="popup_content js-popup_content">
                             <div class="signin-form flex-wrap justify-content-center">
-                                <div class="form-title text-primary text-center col-12 p-0">Вход</div>
+                                <div class="form-title text-primary text-center col-12 p-0">Entrada</div>
                                 <form id="signin-form-form" class="col-12 p-0 text-center">
                                     <input type="email" name="email" placeholder="Email" class="col-12 p-0" required>
-                                    <input type="password" name="password" placeholder="Пароль" class="col-12 p-0" required>
-                                    <button class="btn btn-primary button-round col-5" type="submit">Войти</button>
+                                    <input type="password" name="password" placeholder="Contraseña" class="col-12 p-0" required>
+                                    <button class="btn btn-primary button-round col-5" type="submit">Entrar</button>
                                 </form>
                                 <div class="form-tail bg-blue text-center">
-                                    <div class="mb-4">Ещё не зарегистрированы?</div>
-                                    <button class="btn bg-light button-round text-primary" data-popup-open="#signup-form">Зарегистрироваться</button>
+                                    <div class="mb-4">Todavía no estas registrado?</div>
+                                    <button class="btn bg-light button-round text-primary" data-popup-open="#signup-form">Regístrate ahora</button>
                                 </div>
                             </div>
                         </div>
@@ -176,20 +194,67 @@ $rsAsset->addJs(SITE_TEMPLATE_PATH . '/dist/app.js');
                     <div class="main-block d-flex flex-wrap justify-content-between col-12 px-0 js-">
                         <div class="main-block-title d-flex justify-content-center align-items-center col-12 p-0">
                             <i class="icon icon-coins mr-4"></i>
-                            <div class="center-txt-block">Envita a tu amigo a recibe 10€ en la cuenta de Titulados</div>
+                            <div class="center-txt-block">
+                                <?$APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    ".default",
+                                    [
+                                        "AREA_FILE_SHOW" => "file",
+                                        "PATH" => SITE_TEMPLATE_PATH . "/include/index/first-banner/top.php"
+                                    ],
+                                    false
+                                );?>
+                            </div>
                         </div>
                         <div class="main-block-left col-4 p-0">
-                            <div class="title-1 mb-5">Solicita presupuesto sin compromiso!</div>
-                            <div class="descr col-10 p-0">Nuestro equipo docente revisara la propuesta detenidamente, se asignará el proyecto al docente más cualificado, el cual disponga de los conocimientos y la experiencia redactando este tipo de proyectos.</div>
+                            <?$APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                ".default",
+                                [
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH" => SITE_TEMPLATE_PATH . "/include/index/first-banner/left.php"
+                                ],
+                                false
+                            );?>
                         </div>
                         <div class="main-block-right">
-                            <div class="title-1 mb-5">Узнайте стоимость работы в один клик</div>
-                            <button class="btn button-round btn-warning js-toggle_class" data-class="changed" data-target=".banner-wrapper">Аveriguar el costo</button>
+                            <div class="title-1 mb-5">
+                                <?$APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    ".default",
+                                    [
+                                        "AREA_FILE_SHOW" => "file",
+                                        "PATH" => SITE_TEMPLATE_PATH . "/include/index/first-banner/right/text.php"
+                                    ],
+                                    false
+                                );?>
+                            </div>
+                            <button class="btn button-round btn-warning js-toggle_class" data-class="changed" data-target=".banner-wrapper">
+                                <?$APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    ".default",
+                                    [
+                                        "AREA_FILE_SHOW" => "file",
+                                        "PATH" => SITE_TEMPLATE_PATH . "/include/index/first-banner/right/button.php"
+                                    ],
+                                    false
+                                );?>
+                            </button>
                         </div>
-                        <img src="<?=SITE_TEMPLATE_PATH?>/img/main-image.png" alt="">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/img/main-image.png">
                     </div>
                     <div class="order-form col-12 px-0 flex-wrap justify-content-center">
-                        <div class="order-form-title col-12 p-0 text-center">Форма заказа учебной работы</div>
+                        <div class="order-form-title col-12 p-0 text-center">
+                            <?$APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                ".default",
+                                [
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH" => SITE_TEMPLATE_PATH . "/include/index/first-banner/top2.php"
+                                ],
+                                false
+                            );?>
+                        </div>
                         <form class="d-flex flex-wrap col-8 p-0 justify-content-between">
                             <div class="col-5 p-0">
                                 <select name="faculty" class="col-12 p-0">
@@ -233,7 +298,7 @@ $rsAsset->addJs(SITE_TEMPLATE_PATH . '/dist/app.js');
                                 <input type="file" class="col-12" hidden>
                             </div>
                             <div class="col-12 p-0 text-center">
-                                <button class="btn button-round btn-warning">Узнать стоимость</button>
+                                <button class="btn button-round btn-warning">Descubra el costo</button>
                             </div>
                         </form>
                     </div>
